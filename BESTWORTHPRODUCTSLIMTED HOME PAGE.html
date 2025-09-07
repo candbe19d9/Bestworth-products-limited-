@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Bestworth Products Limited – Premium manufacturer of nails and expanded steel products for construction and industrial use.">
+  <!-- Favicon / Site Logo in Browser Tab -->
+  <link rel="icon" href="bisworth limited lagos/Bestworth Logos/ICON/Bestworth red@8x.png" type="image/png">
+  <title>Bestworth Products Limited</title>
+  <!-- Google Fonts: Roboto & Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      line-height: 1.7;
+      color: #2d3748;
+      background: #ffffff;
+      overflow-x: hidden;
+      text-align: justify;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-align: left;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    /* Fade-up Animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Spread open effect for modals */
+    .spread-open {
+      animation: spreadOpen 0.4s forwards;
+    }
+    @keyframes spreadOpen {
+      0% { 
+        transform: scale(0.95);
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+      }
+      100% { 
+        transform: scale(1);
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+      }
+    }
+    .spread-close {
+      animation: spreadClose 0.4s forwards;
+    }
+    @keyframes spreadClose {
+      0% { 
+        transform: scale(0.95);
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+      }
+      100% { 
+        transform: scale(0.95);
+        opacity: 0;
+        clip-path: inset(50% 50% 50% 50%);
+      }
+    }
+    /* Updated Learn More Button Style */
+    .learn-more-btn {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 12px 0;
+      font-size: 1rem;
+      border-radius: 0;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 3;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .learn-more-btn:hover {
+      background: #1e4ea6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    /* Make image container relative for button positioning */
+    .product-item, .team-member, .retail-img {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 2px solid #cbd5e0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-item:hover, .team-member:hover, .retail-img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .product-item img,
+    .retail-img img,
+    .team-member img {
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .product-item:hover img,
+    .team-member:hover img,
+    .retail-img:hover img {
+      transform: scale(1.05);
+    }
+    /* Team Member Specific Heights */
+    .team-member {
+      width: 350px;
+      min-height: 480px;
+      max-height: 480px;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+    .team-member img {
+      height: 280px;
+    }
+    .member-info {
+      margin-top: 0.75rem;
+      text-align: center;
+      width: 100%;
+      padding: 0 1rem;
+    }
+    .member-info strong {
+      font-size: 1.1rem;
+      color: #2d3748;
+      display: block;
+    }
+    .member-info small {
+      font-size: 0.95rem;
+      color: #4a5568;
+      display: block;
+    }
+    /* Product Item */
+    .product-item {
+      width: 350px;
+      height: 400px;
+      transition: transform 0.3s;
+    }
+    .product-item img {
+      height: 350px;
+    }
+    /* Retail Section */
+    #retail .retail-img {
+      width: 100%;
+      max-width: 400px;
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #retail .retail-img img {
+      height: 350px;
+      width: 100%;
+    }
+    #retail .retail-img p {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+    /* About Section Image */
+    .about-img {
+      width: 100%;
+      max-width: 400px;
+      border: 2px solid #cbd5e0;
+      margin: 0 auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .about-img img {
+      width: 100%;
+      height: auto;
+    }
+    /* === LOGIN MODAL === */
+    .login-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      backdrop-filter: blur(5px);
+    }
+    .login-card {
+      background: white;
+      border-radius: 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
+      padding: 2.5rem;
+      color: #2d3748;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    .login-card.spread-open {
+      transform: scale(1);
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .login-card.spread-close {
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .login-card h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #2b6cb0;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #4a5568;
+      transition: color 0.3s ease;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #cbd5e0;
+      border-radius: 0;
+      font-size: 1rem;
+      background: #fff;
+      color: #2d3748;
+      transition: all 0.3s ease;
+    }
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: #2b6cb0;
+      box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+    }
+    .form-label:focus-within {
+      color: #2b6cb0;
+    }
+    .arrow-icon {
+      position: absolute;
+      right: 1rem;
+      top: 2.7rem;
+      font-size: 1.2rem;
+      color: #60a5fa;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .arrow-icon:hover {
+      transform: translateX(5px);
+    }
+    .arrow-icon.hidden {
+      display: none;
+    }
+    .social-login-card {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+      display: none;
+      backdrop-filter: blur(5px);
+    }
+    .social-card {
+      background: white;
+      border-radius: 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
+      height: 400px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    .social-card.spread-open {
+      transform: scale(1);
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .social-card.spread-close {
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .social-btn {
+      width: 80%;
+      max-width: 300px;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      text-align: center;
+      border: 2px solid #2b6cb0;
+      border-radius: 0;
+      color: #2b6cb0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(43, 108, 176, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    .social-btn:hover::before {
+      left: 100%;
+    }
+    .social-btn:hover {
+      background: #2b6cb0;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .btn-login {
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+      width: 100%;
+      border-radius: 0;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-login::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    .btn-login:hover::before {
+      left: 100%;
+    }
+    .btn-login:hover {
+      background: #1e4ea6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .error-message {
+      color: #e53e3e;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 0.5rem;
+      display: none;
+      padding: 0.5rem;
+      background: rgba(229, 62, 62, 0.1);
+      border-radius: 0;
+    }
+    /* === ANALYSIS PANEL === */
+    .analysis-panel {
+      position: fixed;
+      top: 0;
+      right: -900px;
+      width: 900px;
+      max-width: 100vw;
+      height: 100vh;
+      background: white;
+      box-shadow: -10px 0 20px rgba(0,0,0,0.1);
+      z-index: 150;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      padding: 2rem;
+      border-left: 1px solid #cbd5e0;
+      backdrop-filter: blur(5px);
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    .analysis-panel.spread-open {
+      transform: scale(1);
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .analysis-panel.spread-close {
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @media (max-width: 768px) {
+      .analysis-panel {
+        width: 90%;
+        right: -100%;
+      }
+      .analysis-panel.open {
+        right: 5%;
+      }
+    }
+    .analysis-panel.open {
+      right: 0;
+    }
+    .close-panel {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.8rem;
+      color: #60a5fa;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .close-panel:hover {
+      background: rgba(96, 165, 250, 0.1);
+      transform: rotate(90deg);
+    }
+    .analysis-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .analysis-container {
+      width: 300px;
+      height: 200px;
+      background: #f8fafc;
+      border: 2px solid #cbd5e0;
+      border-radius: 0;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .analysis-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      background: #edf2f7;
+    }
+    .analysis-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #2b6cb0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .analysis-container:hover::before {
+      transform: scaleX(1);
+    }
+    .analysis-container:nth-child(1) {
+      order: 1;
+    }
+    .analysis-container:nth-child(2) {
+      order: 3;
+    }
+    .analysis-container:nth-child(3) {
+      order: 2;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .analysis-container:nth-child(1), 
+      .analysis-container:nth-child(2) {
+        order: initial;
+      }
+      .analysis-container:nth-child(3) {
+        margin-top: 0;
+      }
+    }
+    .analysis-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2b6cb0;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .analysis-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a365d;
+      margin-bottom: 0.5rem;
+    }
+    .analysis-desc {
+      font-size: 0.9rem;
+      color: #4a5568;
+      text-align: center;
+      line-height: 1.5;
+    }
+    /* Detail Modal */
+    .detail-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    .detail-card {
+      background: white;
+      border-radius: 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 500px;
+      min-height: 300px;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    .detail-card.spread-open {
+      transform: scale(1);
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .detail-card.spread-close {
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .back-arrow {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.5rem;
+      color: #60a5fa;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .back-arrow:hover {
+      background: rgba(96, 165, 250, 0.1);
+      transform: rotate(-90deg);
+    }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('bisworth limited lagos/Bestworth Logos/BESTWORTH-1.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      z-index: 2;
+      max-width: 800px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+    @media (min-width: 768px) {
+      .hero-content h1 {
+        font-size: 3.8rem;
+      }
+    }
+    /* Admin Icon (Analysis Panel) - Top Right Inside Hero */
+    .admin-icon {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 40px;
+      height: 40px;
+      background: #2b6cb0;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 4;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      transition: all 0.3s;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(43, 108, 176, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(43, 108, 176, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(43, 108, 176, 0); }
+    }
+    .admin-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+    /* Navigation Menu Bar */
+    .nav-menu-bar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100vh;
+      background: rgba(43, 108, 176, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 5;
+      border-left: 2px solid #2b6cb0;
+      border-radius: 0;
+      box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @media (max-width: 768px) {
+      .nav-menu-bar {
+        width: 80%;
+        right: -100%;
+      }
+      .nav-menu-bar.open {
+        right: 10%;
+      }
+    }
+    .nav-menu-bar.open {
+      right: 0;
+    }
+    .nav-menu-logo {
+      width: 60px;
+      height: 60px;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 0;
+    }
+    .nav-menu-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .nav-menu-btn {
+      width: 100%;
+      padding: 1.2rem 0;
+      background: transparent;
+      color: white;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-menu-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s;
+    }
+    .nav-menu-btn:hover::before {
+      left: 100%;
+    }
+    .nav-menu-btn:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateX(5px);
+    }
+    .nav-menu-btn:last-child {
+      border-bottom: none;
+    }
+    /* Site Loader */
+    .site-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .logo-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 2rem;
+    }
+    .site-logo {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: zoomPulse 1s infinite alternate;
+    }
+    @keyframes zoomPulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .loader-arrow {
+      font-size: 2.5rem;
+      color: white;
+      margin-top: 1rem;
+      animation: pulse 1.5s ease-in-out infinite;
+      cursor: pointer;
+      transform: rotate(90deg);
+      transition: transform 0.3s;
+    }
+    .loader-arrow:hover {
+      transform: rotate(90deg) scale(1.1);
+    }
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+    /* About Section */
+    #about {
+      min-height: 600px;
+      padding: 8rem 0 5rem;
+      text-align: left;
+      position: relative;
+    }
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #2b6cb0, transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: revealLine 1s ease-out 0.5s forwards;
+    }
+    @keyframes revealLine {
+      to { transform: scaleX(1); }
+    }
+    #about .container {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 767px) {
+      #about .container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .about-text {
+      flex: 1;
+      text-align: justify;
+      hyphens: auto;
+      position: relative;
+    }
+    .about-text::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #2b6cb0;
+      border-radius: 3px;
+    }
+    .about-img {
+      flex: 1;
+      border: 2px solid #cbd5e0;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .about-img img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+    }
+    /* Team Section */
+    #team {
+      min-height: 600px;
+      padding: 5rem 0;
+      background: #f8fafc;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #team::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #2b6cb0, transparent);
+      transform: scaleX(0);
+      transform-origin: right;
+      animation: revealLine 1s ease-out 0.5s forwards;
+    }
+    .team-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    /* Products Section */
+    #products {
+      min-height: 600px;
+      padding: 5rem 0;
+      background: white;
+      text-align: center;
+      position: relative;
+    }
+    #products::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #2b6cb0, transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: revealLine 1s ease-out 0.5s forwards;
+    }
+    .product-container h2 {
+      margin-bottom: 0.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .product-container h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #2b6cb0;
+      border-radius: 3px;
+    }
+    .product-container p {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+    .product-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    /* Retail Services Section */
+    #retail {
+      min-height: 600px;
+      padding: 5rem 0;
+      background: white;
+      text-align: left;
+      position: relative;
+    }
+    #retail::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #2b6cb0, transparent);
+      transform: scaleX(0);
+      transform-origin: right;
+      animation: revealLine 1s ease-out 0.5s forwards;
+    }
+    .retail-container {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width: 767px) {
+      .retail-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .retail-text {
+      flex: 1;
+      text-align: justify;
+      hyphens: auto;
+    }
+    /* Contact Section */
+    #contact {
+      min-height: 600px;
+      padding: 5rem 0;
+      background: #edf2f7;
+      text-align: center;
+      position: relative;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #2b6cb0, transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: revealLine 1s ease-out 0.5s forwards;
+    }
+    #contact h2, #contact p {
+      text-align: center;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      background: white;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .btn-enquiry {
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 0;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      margin-top: 1rem;
+      width: 80%;
+      max-width: 400px;
+    }
+    .btn-enquiry::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s;
+    }
+    .btn-enquiry:hover::before {
+      left: 100%;
+    }
+    .btn-enquiry:hover {
+      background: #1e4ea6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    .success-message {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #d1fae5;
+      color: #065f46;
+      border: none;
+      border-radius: 0;
+      font-weight: 500;
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Footer Styles */
+    .main-footer {
+      background: #f8fafc;
+      padding: 2rem 0 1rem;
+      text-align: center;
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      gap: 1.5rem;
+    }
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.5rem;
+      color: #2d3748;
+    }
+    .footer-social a {
+      color: #2d3748;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .footer-social a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #2b6cb0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+    .footer-social a:hover::before {
+      transform: scaleX(1);
+    }
+    .footer-social a:hover {
+      color: #2b6cb0;
+      transform: translateY(-2px);
+    }
+    /* === MODAL STYLES === */
+    .modal-section {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      backdrop-filter: blur(5px);
+    }
+    .modal-card {
+      background: white;
+      border-radius: 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 800px;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      color: #2d3748;
+      position: relative;
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    .modal-card.spread-open {
+      transform: scale(1);
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .modal-card.spread-close {
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .back-arrow {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.8rem;
+      color: #60a5fa;
+      cursor: pointer;
+    }
+    .back-arrow:hover {
+      transform: rotate(90deg);
+    }
+    /* Image Modal Styles */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    .image-modal-content {
+      background: white;
+      border-radius: 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    .image-modal-content.spread-open {
+      transform: scale(1);
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .image-modal-content.spread-close {
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .image-modal-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .image-modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2d3748;
+    }
+    .image-modal-close {
+      font-size: 1.8rem;
+      color: #60a5fa;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .image-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    .image-modal-images {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .image-modal-img {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .image-modal-thumbnails {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border: 2px solid transparent;
+      cursor: pointer;
+      border-radius: 0;
+      transition: all 0.3s;
+    }
+    .thumbnail:hover {
+      transform: scale(1.05);
+      border-color: #2b6cb0;
+    }
+    .thumbnail.active {
+      border-color: #2b6cb0;
+      box-shadow: 0 0 0 2px white, 0 0 0 4px #2b6cb0;
+    }
+    /* Login Navigation Buttons */
+    .login-nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .nav-button {
+      background: none;
+      border: none;
+      color: #2b6cb0;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(43, 108, 176, 0.1), transparent);
+      transition: left 0.6s;
+    }
+    .nav-button:hover::before {
+      left: 100%;
+    }
+    .nav-button:hover {
+      color: #1e4ea6;
+      transform: scale(1.1);
+    }
+    .nav-button:disabled {
+      color: #cbd5e0;
+      cursor: not-allowed;
+    }
+    /* Core Values styling */
+    .core-values {
+      margin-top: 1.5rem;
+      line-height: 2.8;
+    }
+    .core-values p {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .core-values p::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #2b6cb0;
+      font-weight: bold;
+    }
+    .core-values strong {
+      font-weight: 800;
+      color: #1a365d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 1.05rem;
+    }
+    .core-values p:not(strong) {
+      font-weight: 300;
+      color: #4a5568;
+      font-size: 0.95rem;
+    }
+    /* Menu Button in Hero */
+    .menu-button {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 40px;
+      height: 40px;
+      background: rgba(43, 108, 176, 0.9);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 4;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    .menu-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      background: #2b6cb0;
+    }
+    .menu-button::before, .menu-button::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: white;
+      transition: all 0.3s;
+    }
+    .menu-button::before {
+      top: 15px;
+    }
+    .menu-button::after {
+      bottom: 15px;
+    }
+    .menu-button.open::before {
+      transform: rotate(45deg);
+      top: 19px;
+    }
+    .menu-button.open::after {
+      transform: rotate(-45deg);
+      bottom: 19px;
+    }
+    /* Google Form Modal */
+    .form-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    .form-modal-card {
+      background: white;
+      border-radius: 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    .form-modal-card.spread-open {
+      transform: scale(1);
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .form-modal-card.spread-close {
+      transform: scale(0.95);
+      opacity: 0;
+      clip-path: inset(50% 50% 50% 50%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .form-modal-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #2b6cb0;
+      color: white;
+      font-weight: 600;
+    }
+    .form-modal-close {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .form-modal-close:hover {
+      transform: rotate(90deg);
+    }
+    .form-modal-iframe {
+      width: 100%;
+      height: 600px;
+      min-height: 500px;
+      border: none;
+      border-radius: 0;
+    }
+    @media (max-width: 768px) {
+      .form-modal-iframe {
+        height: 500px;
+      }
+    }
+    @media (max-width: 480px) {
+      .form-modal-iframe {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Site Loader -->
+  <div class="site-loader" id="siteLoader">
+    <div class="logo-container">
+      <img src="bisworth limited lagos/Bestworth Logos/ICON/Bestworth-red.png" alt="Bestworth Logo" class="site-logo">
+    </div>
+    <div class="loader-arrow" id="loaderArrow">→</div>
+  </div>
+  <!-- Admin Login Modal -->
+  <div class="login-modal" id="adminLoginModal" style="display: none;">
+    <div class="login-card">
+      <h2>Welcome to Bestworth Products</h2>
+      <!-- Admin Login Form -->
+      <div id="adminLoginForm">
+        <form id="adminForm">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" id="adminName" required class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" id="adminEmail" required class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" id="adminPassword" required class="form-input">
+          </div>
+          <button type="submit" class="btn-login">Enter Site</button>
+          <div class="form-group" style="margin-top: 1rem;">
+            <button type="button" class="social-btn" id="googleSignInBtn">Sign in with Google</button>
+          </div>
+        </form>
+        <div class="login-nav-buttons">
+          <button type="button" class="nav-button" id="adminToLogoBtn">←</button>
+          <button type="button" class="nav-button" style="visibility: hidden;">→</button>
+        </div>
+      </div>
+      <div class="error-message" id="loginError">Incorrect Email or Access Denied</div>
+    </div>
+  </div>
+  <!-- Social Login Card -->
+  <div class="social-login-card" id="socialLoginCard">
+    <div class="social-card">
+      <h4>Sign in with</h4>
+      <div class="social-btn" onclick="simulateGoogleLogin()">Sign in with Google</div>
+      <div class="social-btn" onclick="simulateAppleLogin()">Sign in with Apple</div>
+    </div>
+  </div>
+  <!-- Analysis Panel (Right Sidebar) -->
+  <div class="analysis-panel" id="analysisPanel">
+    <div class="close-panel" onclick="closeAnalysisPanel()">&times;</div>
+    <h2>📊 Site Analysis</h2>
+    <p><small>Click any container to view detailed information.</small></p>
+    <div class="analysis-grid">
+      <div class="analysis-container" onclick="showAnalysisDetail('totalViews')">
+        <div class="analysis-title">Total Site Views</div>
+        <div class="analysis-value" id="totalViewsCount">0</div>
+        <div class="analysis-desc">Total number of times this site has been accessed by users</div>
+      </div>
+      <div class="analysis-container" onclick="showAnalysisDetail('dailyVisits')">
+        <div class="analysis-title">Daily Visits</div>
+        <div class="analysis-value" id="dailyVisitsCount">0</div>
+        <div class="analysis-desc">Number of times the site is opened on a daily basis</div>
+      </div>
+      <div class="analysis-container" onclick="showAnalysisDetail('siteEfficiency')">
+        <div class="analysis-title">Site Efficiency</div>
+        <div class="analysis-value" id="efficiencyRating">0%</div>
+        <div class="analysis-desc">Performance rating based on site functionality and user experience</div>
+      </div>
+    </div>
+  </div>
+  <!-- Detail Modal -->
+  <div class="detail-modal" id="detailModal">
+    <div class="detail-card" id="detailContent">
+      <div class="back-arrow" onclick="closeDetailModal()">&larr;</div>
+    </div>
+  </div>
+  <!-- Image Modal -->
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+      <div class="image-modal-header">
+        <div class="image-modal-title" id="imageModalTitle">Product Images</div>
+        <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+      </div>
+      <img src="" alt="Product Image" class="image-modal-img" id="mainImage">
+      <div class="image-modal-thumbnails" id="thumbnailContainer">
+        <!-- Thumbnails will be added here dynamically -->
+      </div>
+    </div>
+  </div>
+  <!-- Admin Icon (Analysis Panel) -->
+  <div class="admin-icon" id="adminIcon" onclick="openAnalysisPanel()">📊</div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content fade-up"></div>
+    <!-- Menu Button -->
+    <div class="menu-button" id="menuButton"></div>
+  </section>
+  <!-- Navigation Menu Bar -->
+  <div class="nav-menu-bar" id="navMenuBar">
+    <img src="bisworth limited lagos/Bestworth Logos/ICON/Bestworth-red.png" alt="Menu Logo" class="nav-menu-logo" id="menuLogo">
+    <button class="nav-menu-btn" onclick="showSectionModal('about')">About Us</button>
+    <button class="nav-menu-btn" onclick="showSectionModal('team')">Team</button>
+    <button class="nav-menu-btn" onclick="showSectionModal('products')">Products</button>
+    <button class="nav-menu-btn" onclick="showSectionModal('retail')">Retail Services</button>
+    <button class="nav-menu-btn" onclick="showSectionModal('contact')">Contact Us</button>
+  </div>
+  <!-- About Section -->
+  <section id="about" class="fade-up">
+    <div class="container">
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>BestWorth Products Limited is a proudly Nigerian manufacturing company</p>
+        <br>
+        <p>committed to producing top-quality building materials for lasting excellence. Incorporated in September 2017 and commencing operations in December 2024 at our factory in Epe, Lagos, we are driven by a mission to support the construction industry with durable, efficient, and affordable products.
+Our operations are guided by a business model that ensures all stakeholders customers, employees, partners, and communities benefit from our continued growth. BestWorth Products Limited is steadily building a strong and trusted brand in the building materials sector.
+</p>
+        <br>
+        <p><strong>Our Vision</strong><br>
+To be a leading manufacturer of reliable and affordable building materials in Nigeria, known for innovation, quality, and stakeholder value<br><br>
+<strong>Our Mission</strong><br>
+To manufacture high-quality building materials that meet the needs of our customers, delivered through efficient operations and a commitment to excellence.<br><br>
+<strong>Core Values</strong><br>
+<div class="core-values">
+  <p><strong>Quality:</strong> We ensure every product meets high durability and performance standards.</p>
+  <p><strong>Efficiency:</strong> We optimize our processes to deliver products on time and at scale.</p>
+  <p><strong>Affordability:</strong> We provide value without compromising on quality.</p>
+  <p><strong>Customer Focus:</strong> We support our clients with flexible minimum order quantities and reliable service.</p>
+  <p><strong>Integrity:</strong> We are honest and transparent in all business dealings.</p>
+  <p><strong>Shared Success:</strong> We are committed to delivering value to all stakeholders.</p>
+</div>
+</p>
+      </div>
+      <div class="about-img">
+        <img src="bisworth limited lagos/Bestworth Logos/BESTWORTH-5.jpg" alt="Factory" loading="lazy">
+      </div>
+    </div>
+  </section>
+  <!-- Management Team Section -->
+  <section id="team" class="fade-up">
+    <div class="team-container">
+      <h2>Management Team</h2>
+      <div class="team-grid" id="teamGrid">
+        <!-- Member 1 -->
+        <div class="team-member">
+          <img src="Best-Worth-managing-director.jpg" alt="Managing Director">
+          <button class="learn-more-btn" onclick="showTeamModal(
+            'Rotimi Ibrahim',
+            'Group Managing Director',
+            `<p>Mr. Olurotimi Ibrahim, the Founder and Managing Director of Bestworth Products Limited, is a Chartered Accountant (FCA, FCIT) and a first-generation entrepreneur.He began his career in the banking industry, where he rose to the position of Senior Manager. Driven by a passion for entrepreneurship, he established his own accounting and auditing firm, Ibrahim & Co., after completing a 30-month professional attachment with an established accounting firm to qualify for his practicing license. In 1993, he officially launched Olurotimi Ibrahim & Co. Chartered Accountants, starting from his home before expanding to offices in Palmgrove, Lagos, and later Ikeja.Alongside his accounting practice, he co-founded Linksbond College, where he continues to play an active role as a stakeholder. His experience with the Lekki Free Zone Development Company exposed him to the potential of manufacturing businesses, where factories were rapidly set up in rented warehouses. This experience inspired him to establish Bestworth Products Limited in 2017 and later Bestworth Building Materials Trading Company in 2018.Through his leadership, Mr. Ibrahim brings years of professional expertise, entrepreneurial vision, and strong business values to drive the growth of Bestworth Products Limited.</p>`,
+            'Best-Worth-managing-director.jp'
+          )">view profie</button>
+          <div class="member-info">
+            <p><strong>Rotimi Ibrahim</strong><br><small>Group Managing Director</small></p>
+          </div>
+        </div>
+        <!-- Member 2 -->
+        <div class="team-member">
+          <img src="retail-service.jpg" alt="Mary Ibrahim">
+          <button class="learn-more-btn" onclick="showTeamModal(
+            'Mary Ibrahim',
+            'Group Executive Director, Retail Services',
+            `<p>Ms. Mary Ibrahim is a seasoned educationist with a degree from Delta State University. With over 30 years of dedicated service in the teaching profession and more than two decades of experience in retail operations and goods distribution, she brings a wealth of knowledge in customer service and operational management. Her previous role as a Mega Distributor for Multipro and Fun Snack positioned her as a key player in retail distribution. Since joining Bestworth Building Materials Trading Company in 2020, she has been responsible for managing the group’s retail service operations, leveraging her extensive experience to optimize customer engagement and operational efficiency.</p>`,
+            'retail-service.jpg'
+          )">view profile</button>
+          <div class="member-info">
+            <p><strong>Mary Ibrahim</strong><br><small>Group Executive Director, Retail Services</small></p>
+          </div>
+        </div>
+        <!-- Member 3 -->
+        <div class="team-member">
+          <img src="Best-Worth-head-of-dept.jpg" alt="Head of Operations">
+          <button class="learn-more-btn" onclick="showTeamModal(
+            'Yusuf Ibrahim',
+            'Group Executive Director Operation',
+            `<p>Mr. Yusuf Ibrahim is the Head of Operations at Bestworth Products Limited. He holds a degree in Mechatronics Engineering and a Master of Business Administration (MBA) from Lagos Business School.With nearly a decade of professional experience in facility management, machine maintenance, and marketing, he has worked with top brands across different industries. His career journey includes roles as Program Manager and Fleet Engineer at Trekkscooters, Maintenance Engineer at The Coca-Cola Company (CHI Limited), Facility Maintenance Engineer at Lekki Free Zone Development Company, and Sales & Marketing Associate at Deggia Food Delivery.Mr. Yusuf brings a wealth of knowledge in operations, engineering, and business management to Bestworth Products Limited. His expertise ensures that the company’s mission and vision are consistently achieved through efficient operations and innovative strategies.</p>`,
+            'Best-Worth-head-of-dept.jpg'
+          )">view profile</button>
+          <div class="member-info">
+            <p><strong>Yusuf  Ibrahim</strong><br><small>Group Executive Director Operation</small></p>
+          </div>
+        </div>
+        <!-- Member 4 -->
+        <div class="team-member">
+          <img src="ajose-image.jpg" alt="Head of Finance and Administrations">
+          <button class="learn-more-btn" onclick="showTeamModal(
+            'Yusuf Ajose',
+            'Group Head of Finance and Administration',
+            `<p>Mr. Yusuf Ajose is the Group Head of Finance and Administration at Bestworth Products Limited. An Associate Chartered Accountant (ACA) and an Associate Accounting Technician (AAT), he possesses extensive expertise in finance, auditing, and administrative management. His career commenced at Sosaplast Nigeria Limited, a prominent manufacturing firm, where he served as a Senior Operator from 1999 to 2008. In 2009, he joined Olurotimi Ibrahim & Co. (Chartered Accountants), advancing from an Audit Trainee to Senior Audit Staff, a position he held until 2021. He subsequently served as Internal Audit Manager at Precious Gate Technology until March 2023. Since his appointment as General Manager of Finance in April 2023, Mr. Ajose has played a pivotal role in resource management, compliance, and fostering financial stability and growth within the organization.</p>`,
+            'ajose-image.jpg'
+          )">view profile</button>
+          <div class="member-info">
+            <p><strong>Yusuf Ajose</strong><br><small>Group Head of Finance and Administration</small></p>
+          </div>
+        </div>
+        <!-- Member 5 -->
+        <div class="team-member">
+          <img src="sunday-image.jpg" alt="Sunday Aikulola">
+          <button class="learn-more-btn" onclick="showTeamModal(
+            'Sunday Aikulola',
+            'Production Manager',
+            `<p>Mr. Sunday Aikulola, a trained machine technician, with over 20 years of experience in steel products manufacturing. His career includes tenure with major industry players, where he honed his technical and managerial skills. Since joining Bestworth Products Limited in 2025, he has been instrumental in ensuring that the production team achieves operational excellence, maintaining high standards of quality and efficiency.</p>`,
+            'sunday-image.jpg'
+          )">view profile</button>
+          <div class="member-info">
+            <p><strong>Sunday Aikulola</strong><br><small>Production Manager</small></p>
+          </div>
+        </div>
+        <!-- Member 6 -->
+        <div class="team-member">
+          <img src="omotayo-image.jpg" alt="Omotayo Quadri">
+          <button class="learn-more-btn" onclick="showTeamModal(
+            'Omotayo Quadri',
+            'Sales and Marketing Team Lead',
+            `<p>Mr. Omotayo Quadri is a highly capable sales executive responsible for leading the group’s sales and marketing initiatives. Prior to his current role, he served as Sales executive at Jameson Auto Distributor, representing Yamaha Motorcycles from 2021 to 2023. He joined Bestworth in 2024, where he has demonstrated exceptional leadership in driving revenue growth and developing strategic marketing campaigns aligned with the company’s vi.</p>`,
+            'omotayo-image.jpg'
+          )"> view profile</button>
+          <div class="member-info">
+            <p><strong>Omotayo Quadri</strong><br><small>Sales and Marketing Team Lead</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Products Section -->
+  <section id="products" class="fade-up">
+    <div class="product-container">
+      <h2>Our Products</h2>
+      <p>At Bestworth Products Limited, we specialize in manufacturing high-quality steel nails ranging from 1 to 5 inches. And many more essential construction materials. With flexible minimum orders for users and large distributors, ensuring accessibility and convenience for all customers. Our expanding product lines are: Roofing nails, drywall screws, binding wire, and wire meshes.</p>
+      <div class="product-grid">
+        <div class="product-item" onclick="showProductImages('Products', ['best-worth-product-1.jpg', 'bestworth-product-2.jpg', 'best-worth-product-3.jpg', 'best-worth-product-image.jpg','best-worth-product.jpg'])">
+          <img src="best-worth-product-1.jpg" alt="Steel Nails">
+          <!-- Button removed as per requirement -->
+        </div>
+        <div class="product-item" onclick="showProductImages('Products', ['bestworth-product-2.jpg','best-worth-product-1.jpg','best-worth-product-3.jpg',  'best-worth-product-image.jpg','best-worth-product.jpg',])">
+          <img src="bestworth-product-2.jpg" alt="1.5-inch Roofing Nails">
+          <!-- Button removed -->
+        </div>
+        <div class="product-item" onclick="showProductImages('Products', ['best-worth-product-3.jpg', 'bestworth-product-2.jpg', 'best-worth-product-1.jpg','best-worth-product-image.jpg', 'best-worth-product.jpg',])">
+          <img src="best-worth-product-3.jpg" alt="Expanding Product Line">
+          <!-- Button removed -->
+        </div>
+        <div class="product-item" onclick="showProductImages('Products', ['best-worth-product-image.jpg', 'best-worth-product-3.jpg', 'bestworth-product-2.jpg','best-worth-product-1.jpg', 'best-worth-product.jpg',])">
+          <img src="best-worth-product-image.jpg" alt="New Product Line">
+          <!-- Button removed -->
+        </div>
+        <!-- Additional Product Item -->
+        <div class="product-item" onclick="showProductImages('Products', ['best-worth-product.jpg', 'best-worth-product-image.jpg', 'best-worth-product-3.jpg', 'bestworth-product-2.jpg','best-worth-product-1.jpg',])">
+          <img src="best-worth-product.jpg" alt="Additional Product">
+          <!-- Button removed -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Retail Services Section -->
+  <section id="retail" class="fade-up">
+    <div class="container">
+      <div class="retail-container">
+        <div class="retail-text">
+          <h2>Retail Services</h2>
+          <p>Best Worth Builder's Mart is a trusted retail business based in Lagos, offering both a physical store and online platform to meet the building material needs of construction and home improvement projects.</p>
+          <br>
+          <p>We are dedicated to being a one-stop store for all building materials, providing reliable and affordable products alongside excellent customer service.</p>
+        </div>
+        <div class="retail-img" onclick="showProductImages('Retail Services', [ 'Bestworth-physcal-outlet.jpg'])">
+          <img src="best-worth-retails.jpg" alt="Retail Service">
+          <!-- Button removed -->
+          <p>Retail Service and CSR</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact Section -->
+  <section id="contact" class="fade-up">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>We'd love to hear from you. Please fill out the form below.</p>
+      <div class="form-container">
+        <button class="btn-enquiry" onclick="openFormModal()">Click to Send Us Your Enquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Form Modal -->
+  <div class="form-modal" id="formModal">
+    <div class="form-modal-card spread-open">
+      <div class="form-modal-header">
+        <span>Send Us Your Enquiry</span>
+        <button class="form-modal-close" onclick="closeFormModal()">&times;</button>
+      </div>
+      <iframe 
+        class="form-modal-iframe" 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfUXbQL7tcQm3le0p2GOFjhccvSHku4Hnsdt69jnlkFSOfVRg/viewform?embedded=true" 
+        frameborder="0" 
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Updated Footer -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <!-- Centered Social Icons -->
+      <div class="footer-social">
+        <a href="https://instagram.com/bestworthproducts" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/2349125205910" target="_blank" aria-label="Call">
+          <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/2348100432499" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/bestworth-products-limited/posts/?feedView=all" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <!-- Centered Address Text -->
+      <div>
+        <p>KM 5, Atlantic Collage Road, Poka Epe, Lagos State, Nigeria</p>
+      </div>
+    </div>
+    <!-- Copyright -->
+    <div class="footer-note">
+      &copy; <span id="year">2025</span> Bestworth Products Limited. All rights reserved.
+    </div>
+  </footer>
+  <!-- Modal for Team, Product & Search -->
+  <div class="modal-section" id="modal">
+    <div class="modal-card">
+      <div class="back-arrow" onclick="closeModal()">&times;</div>
+    </div>
+  </div>
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const allowedAdminEmails = ['exconcept565@gmail.com', 'ibrahimyusuf108@gmail.com'];
+    const siteLoader = document.getElementById('siteLoader');
+    const adminLoginModal = document.getElementById('adminLoginModal');
+    const adminIcon = document.getElementById('adminIcon');
+    const navMenuBar = document.getElementById('navMenuBar');
+    const menuLogo = document.getElementById('menuLogo');
+    const loaderArrow = document.getElementById('loaderArrow');
+    const menuButton = document.getElementById('menuButton');
+    let currentUserPosition = null;
+    let currentAdminEmail = null;
+    // Initialize site analytics
+    let siteAnalytics = JSON.parse(localStorage.getItem('siteAnalytics')) || {
+      totalViews: 0,
+      dailyVisits: [],
+      efficiencyRating: 75
+    };
+    // Update analytics with current visit
+    const today = new Date().toDateString();
+    const dailyVisit = siteAnalytics.dailyVisits.find(v => v.date === today);
+    if (dailyVisit) {
+      dailyVisit.count++;
+    } else {
+      siteAnalytics.dailyVisits.push({ date: today, count: 1 });
+    }
+    siteAnalytics.totalViews++;
+    localStorage.setItem('siteAnalytics', JSON.stringify(siteAnalytics));
+    // Site loader - 10 seconds
+    setTimeout(() => {
+      // After 10 seconds, hide loader
+      siteLoader.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      menuButton.style.display = 'flex';
+    }, 10000);
+    // Click arrow to show admin login
+    loaderArrow.addEventListener('click', function() {
+      siteLoader.style.display = 'none';
+      adminLoginModal.style.display = 'flex';
+      setTimeout(() => {
+        document.querySelector('.login-card').classList.add('spread-open');
+      }, 100);
+    });
+    // Toggle menu bar with button
+    menuButton.addEventListener('click', function() {
+      if (currentUserPosition === 'admin') {
+        // If admin is logged in, hide menu and show analysis panel
+        navMenuBar.classList.remove('open');
+        menuButton.classList.remove('open');
+        openAnalysisPanel();
+      } else {
+        // If not admin, show menu
+        navMenuBar.classList.toggle('open');
+        menuButton.classList.toggle('open');
+      }
+    });
+    // Close menu when clicking logo
+    menuLogo.addEventListener('click', function() {
+      navMenuBar.classList.remove('open');
+      menuButton.classList.remove('open');
+    });
+    // Admin form submission
+    const adminForm = document.getElementById('adminForm');
+    const adminName = document.getElementById('adminName');
+    const adminEmail = document.getElementById('adminEmail');
+    const adminPassword = document.getElementById('adminPassword');
+    const loginError = document.getElementById('loginError');
+    adminForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = adminName.value.trim();
+      const email = adminEmail.value.trim().toLowerCase();
+      const password = adminPassword.value;
+      if (!name || !email || !password) {
+        loginError.textContent = 'Please fill in all fields';
+        loginError.style.display = 'block';
+        return;
+      }
+      if (password.length < 8) {
+        loginError.textContent = 'Password must be at least 8 characters';
+        loginError.style.display = 'block';
+        return;
+      }
+      if (allowedAdminEmails.includes(email)) {
+        loginError.style.display = 'none';
+        adminLoginModal.style.display = 'none';
+        adminIcon.style.display = 'flex';
+        menuButton.style.display = 'none';
+        currentUserPosition = 'admin';
+        currentAdminEmail = email;
+        // Update analysis panel with current data
+        updateAnalysisPanel();
+      } else {
+        loginError.textContent = 'Incorrect Email or Access Denied';
+        loginError.style.display = 'block';
+      }
+    });
+    // Simulate Google Login
+    function simulateGoogleLogin() {
+      window.open('https://accounts.google.com', '_blank');
+      setTimeout(() => {
+        // Simulate successful Google login
+        const googleUserEmail = 'exconcept565@gmail.com';
+        const googleUserPassword = 'GooglePass123!';
+        // Pre-fill admin form
+        adminEmail.value = googleUserEmail;
+        adminPassword.value = googleUserPassword;
+        // Switch to admin form if not already there
+        adminLoginModal.style.display = 'flex';
+        siteLoader.style.display = 'none';
+        // Auto-submit if this is an allowed admin email
+        if (allowedAdminEmails.includes(googleUserEmail)) {
+          adminName.value = 'Admin User';
+          adminForm.dispatchEvent(new Event('submit'));
+        }
+      }, 1500);
+    }
+    function simulateAppleLogin() {
+      window.open('https://appleid.apple.com', '_blank');
+      setTimeout(() => {
+        adminLoginModal.style.display = 'none';
+        adminIcon.style.display = 'flex';
+        menuButton.style.display = 'none';
+        currentUserPosition = 'admin';
+        currentAdminEmail = 'appleuser@example.com';
+        updateAnalysisPanel();
+      }, 1500);
+    }
+    function openAnalysisPanel() {
+      if (currentUserPosition === 'admin') {
+        updateAnalysisPanel();
+        document.getElementById('analysisPanel').classList.add('open');
+        document.getElementById('analysisPanel').classList.add('spread-open');
+      }
+    }
+    function closeAnalysisPanel() {
+      document.getElementById('analysisPanel').classList.remove('open');
+      document.getElementById('analysisPanel').classList.add('spread-close');
+      setTimeout(() => {
+        document.getElementById('analysisPanel').classList.remove('spread-close');
+      }, 400);
+    }
+    function updateAnalysisPanel() {
+      const analytics = JSON.parse(localStorage.getItem('siteAnalytics')) || {
+        totalViews: 0,
+        dailyVisits: [],
+        efficiencyRating: 75
+      };
+      const today = new Date().toDateString();
+      const todayVisit = analytics.dailyVisits.find(v => v.date === today) || { count: 0 };
+      document.getElementById('totalViewsCount').textContent = analytics.totalViews.toLocaleString();
+      document.getElementById('dailyVisitsCount').textContent = todayVisit.count;
+      document.getElementById('efficiencyRating').textContent = `${analytics.efficiencyRating}%`;
+    }
+    function showAnalysisDetail(type) {
+      const analytics = JSON.parse(localStorage.getItem('siteAnalytics')) || {
+        totalViews: 0,
+        dailyVisits: [],
+        efficiencyRating: 75
+      };
+      const today = new Date().toDateString();
+      const todayVisit = analytics.dailyVisits.find(v => v.date === today) || { count: 0 };
+      let title, content;
+      switch(type) {
+        case 'totalViews':
+          title = 'Total Site Views';
+          content = `
+            <p><strong>Total Views:</strong> ${analytics.totalViews.toLocaleString()}</p>
+            <p>This represents the total number of times users have accessed this website since its launch. Each visit contributes to our understanding of user engagement and helps us improve our services.</p>
+            <p>The site has been accessed from various locations and devices, demonstrating its wide reach and accessibility to our target audience.</p>
+          `;
+          break;
+        case 'dailyVisits':
+          title = 'Daily Visits';
+          content = `
+            <p><strong>Today's Visits:</strong> ${todayVisit.count}</p>
+            <p><strong>Current Date:</strong> ${today}</p>
+            <p>This metric tracks the number of times the site is opened on a daily basis. It helps us understand user patterns and peak engagement times.</p>
+            <p>Our goal is to increase daily visits through improved content, better user experience, and targeted marketing efforts.</p>
+            <p>Recent 7-day average: ${Math.round(analytics.dailyVisits.slice(-7).reduce((acc, v) => acc + v.count, 0) / Math.min(7, analytics.dailyVisits.length))} visits per day</p>
+          `;
+          break;
+        case 'siteEfficiency':
+          title = 'Site Efficiency Rating';
+          content = `
+            <p><strong>Current Rating:</strong> ${analytics.efficiencyRating}%</p>
+            <p><strong>Performance Status:</strong> ${analytics.efficiencyRating >= 80 ? 'Excellent' : analytics.efficiencyRating >= 60 ? 'Good' : 'Needs Improvement'}</p>
+            <p>This rating is based on multiple factors including site speed, user experience, mobile responsiveness, and functionality.</p>
+            <p>Key metrics considered:</p>
+            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+              <li>Page load time: ${analytics.efficiencyRating >= 80 ? 'Fast' : analytics.efficiencyRating >= 60 ? 'Average' : 'Slow'}</li>
+              <li>Mobile compatibility: ${analytics.efficiencyRating >= 70 ? 'Excellent' : 'Good'}</li>
+              <li>Navigation ease: ${analytics.efficiencyRating >= 75 ? 'Intuitive' : 'Acceptable'}</li>
+              <li>Feature functionality: ${analytics.efficiencyRating >= 85 ? 'Fully Operational' : 'Mostly Functional'}</li>
+            </ul>
+            <p>We continuously work to improve this rating by optimizing code, enhancing user interface, and adding valuable features.</p>
+          `;
+          break;
+        default:
+          return;
+      }
+      const modal = document.getElementById('detailModal');
+      const contentDiv = document.getElementById('detailContent');
+      contentDiv.innerHTML = `
+        <div class="back-arrow" onclick="closeDetailModal()">&larr;</div>
+        <h3>${title}</h3>
+        ${content}
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <button onclick="closeDetailModal()" style="background: #2b6cb0; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 0; cursor: pointer; font-weight: 500;">Return to Analysis Panel</button>
+        </div>
+      `;
+      modal.style.display = 'flex';
+      contentDiv.classList.add('spread-open');
+    }
+    function closeDetailModal() {
+      document.getElementById('detailContent').classList.add('spread-close');
+      setTimeout(() => {
+        document.getElementById('detailModal').style.display = 'none';
+        document.getElementById('detailContent').classList.remove('spread-close');
+      }, 400);
+    }
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modalContent');
+    function showModal(title, content) {
+      modal.style.display = 'flex';
+      // Ensure the modal content is properly set before animation
+      document.querySelector('.modal-card').innerHTML = `
+        <div class="back-arrow" onclick="closeModal()">&times;</div>
+        <h2>${title}</h2>
+        ${content}
+      `;
+      // Trigger the spread open animation after a brief delay
+      setTimeout(() => {
+        document.querySelector('.modal-card').classList.add('spread-open');
+      }, 50);
+    }
+    function closeModal() {
+      const card = document.querySelector('.modal-card');
+      card.classList.remove('spread-open');
+      card.classList.add('spread-close');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        card.classList.remove('spread-close');
+      }, 400);
+    }
+    window.showTeamModal = function(name, role, bio, img) {
+      const content = `<img src="${img}" alt="${name}" style="display:block; margin:1.5rem auto; max-height:300px; width:auto; max-width:100%;"><h3 style="text-align:center;">${name}</h3><p><strong>${role}</strong></p>${bio}`;
+      showModal('Management Team', content);
+    };
+    window.showProductModal = function(name, desc, img) {
+      const content = `<img src="${img}" alt="${name}" style="display:block; margin:1.5rem auto; max-height:300px; width:auto; max-width:100%;"><h3 style="text-align:center;">${name}</h3>${desc}`;
+      showModal('Product Details', content);
+    };
+    window.showRetailModal = function() {
+      const content = `<img src="Bestworth physcal outlet.jpg" alt="Retail Service" style="display:block; margin:1.5rem auto; max-height:300px; width:auto; max-width:100%;">`;
+      showModal('Retail Services', content);
+    };
+    function showSectionModal(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+      // Clone the content to avoid issues with event listeners
+      const content = section.innerHTML;
+      const title = section.querySelector('h2')?.innerText || sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+      showModal(title, content);
+    }
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.getElementById('detailModal').addEventListener('click', e => { if (e.target === document.getElementById('detailModal')) closeDetailModal(); });
+    // Image Modal Functions
+    const imageModal = document.getElementById('imageModal');
+    const mainImage = document.getElementById('mainImage');
+    const thumbnailContainer = document.getElementById('thumbnailContainer');
+    const imageModalTitle = document.getElementById('imageModalTitle');
+    function showProductImages(title, imageSources) {
+      imageModalTitle.textContent = title;
+      thumbnailContainer.innerHTML = '';
+      mainImage.src = imageSources[0];
+      mainImage.alt = title;
+      imageSources.forEach((src, index) => {
+        const thumb = document.createElement('img');
+        thumb.src = src;
+        thumb.alt = `${title} ${index + 1}`;
+        thumb.className = 'thumbnail';
+        if (index === 0) thumb.classList.add('active');
+        thumb.addEventListener('click', () => {
+          mainImage.src = src;
+          mainImage.alt = `${title} ${index + 1}`;
+          document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+        thumbnailContainer.appendChild(thumb);
+      });
+      imageModal.style.display = 'flex';
+      document.querySelector('.image-modal-content').classList.add('spread-open');
+    }
+    function closeImageModal() {
+      document.querySelector('.image-modal-content').classList.add('spread-close');
+      setTimeout(() => {
+        imageModal.style.display = 'none';
+        document.querySelector('.image-modal-content').classList.remove('spread-close');
+      }, 400);
+    }
+    imageModal.addEventListener('click', e => {
+      if (e.target === imageModal) closeImageModal();
+    });
+    // Add Google Form submission listener
+    window.addEventListener('message', function(e) {
+      if (e.origin !== 'https://docs.google.com') return;
+      if (e.data && e.data.type === 'formResponse') {
+        // Extract form data (this would need to be handled by Google Forms)
+        const formData = {
+          name: 'John', // This would come from the form
+          lastName: 'Doe', // This would come from the form
+          email: 'john.doe@example.com', // This would come from the form
+          message: 'This is a test message', // This would come from the form
+          timestamp: Date.now()
+        };
+        // Save the submission
+        saveSubmission(formData);
+      }
+    });
+    function saveSubmission(data) {
+      const submissions = JSON.parse(localStorage.getItem('customerSubmissions') || '[]');
+      const newSubmission = { ...data, timestamp: Date.now(), approved: false };
+      submissions.push(newSubmission);
+      localStorage.setItem('customerSubmissions', JSON.stringify(submissions));
+      if (currentAdminEmail && allowedAdminEmails.includes(currentAdminEmail)) {
+        sendEmailNotification(currentAdminEmail, newSubmission);
+      }
+    }
+    function sendEmailNotification(adminEmail, submission) {
+      console.log(`Email notification sent to ${adminEmail} about new submission from ${submission.email}`);
+      const notification = document.createElement('div');
+      notification.style.position = 'fixed';
+      notification.style.top = '20px';
+      notification.style.right = '20px';
+      notification.style.backgroundColor = '#2b6cb0';
+      notification.style.color = 'white';
+      notification.style.padding = '15px';
+      notification.style.borderRadius = '0';
+      notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+      notification.style.zIndex = '1000';
+      notification.style.maxWidth = '300px';
+      notification.innerHTML = `
+        <strong>New Enquiry!</strong><br>
+        From: ${submission.name} ${submission.lastName}<br>
+        Email: ${submission.email}<br>
+        <small>Just now</small>
+      `;
+      document.body.appendChild(notification);
+      setTimeout(() => {
+        if (notification.parentElement) {
+          document.body.removeChild(notification);
+        }
+      }, 5000);
+    }
+
+    // Form Modal Functions
+    const formModal = document.getElementById('formModal');
+    function openFormModal() {
+      formModal.style.display = 'flex';
+      // Trigger animation
+      setTimeout(() => {
+        document.querySelector('.form-modal-card').classList.add('spread-open');
+      }, 50);
+    }
+    function closeFormModal() {
+      const card = document.querySelector('.form-modal-card');
+      card.classList.remove('spread-open');
+      card.classList.add('spread-close');
+      setTimeout(() => {
+        formModal.style.display = 'none';
+        card.classList.remove('spread-close');
+      }, 400);
+    }
+    // Close modal on click outside
+    formModal.addEventListener('click', e => {
+      if (e.target === formModal) closeFormModal();
+    });
+  </script>
+</body>
+</html>
